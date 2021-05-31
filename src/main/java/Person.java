@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class Person {
+public class Person implements Serializable {
     private static Integer personCount = 0;
 
     private final Integer personID;
@@ -51,6 +52,31 @@ public class Person {
 
     public Education getEducation() {
         return education;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Person that = (Person) o;
+
+        if (personID != that.personID) {
+            return false;
+        }
+        return true;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = personID != null ? name.hashCode() : 0;
+        result = 31 * result;
+        return result;
     }
 
     @Override

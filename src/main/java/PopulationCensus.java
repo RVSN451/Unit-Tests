@@ -42,7 +42,7 @@ public class PopulationCensus {
 
     public List<Person> ableBodiedPeople() {
 
-        List<Person> ableBodiedPeople = Arrays.stream(populationCensus.values().toArray(new Person[0]))
+        return populationCensus.values().stream()
                 .filter(person -> person.getEducation() == Education.HIGHER)
                 .filter(person -> (person.getSex() == Sex.FEMALE && person.getAge() > 17 && person.getAge() < 60)
                         || (person.getSex() == Sex.MALE && person.getAge() > 17 && person.getAge() < 65))
@@ -50,13 +50,11 @@ public class PopulationCensus {
                         .thenComparing(Person::getName)
                         .thenComparing(Person::getPersonID))
                 .collect(Collectors.toList());
-
-        return ableBodiedPeople;
     }
 
     public int ableBodiedPeopleCount() {
 
-        long ableBodiedPeople = Arrays.stream(populationCensus.values().toArray(new Person[0]))
+        long ableBodiedPeople = populationCensus.values().stream()
                 .filter(person -> person.getEducation() == Education.HIGHER)
                 .filter(person -> (person.getSex() == Sex.FEMALE && person.getAge() > 17 && person.getAge() < 60)
                         || (person.getSex() == Sex.MALE && person.getAge() > 17 && person.getAge() < 65))
@@ -66,17 +64,15 @@ public class PopulationCensus {
     }
 
     public List<String> conscriptFamilyList() {
-        List<String> conscriptList = Arrays.stream(populationCensus.values().toArray(new Person[0]))
+        return populationCensus.values().stream()
                 .filter(person -> person.getAge() > 17 && person.getAge() < 28)
                 .filter(person -> person.getSex() == Sex.MALE)
                 .map(Person::getFamily)
                 .collect(Collectors.toList());
-
-        return conscriptList;
     }
 
     public void printPopulationCensus() {
-        Arrays.stream(populationCensus.values().toArray())
+        populationCensus.values().stream()
                 .forEach(System.out::println);
     }
 }

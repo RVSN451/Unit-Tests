@@ -1,41 +1,42 @@
-import org.hamcrest.Matcher;
+
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.hamcrest.beans.HasProperty.hasProperty;
 
 
 class PersonTest {
 
     @Test
     public void valueDateOfBirth_thenCorrect() {
-        Person person = new Person("Sergry", "Petrov", LocalDate.of(1980,12,12),
+        Person person = new Person("Sergry", "Petrov", LocalDate.of(1980, 12, 12),
                 Sex.MALE, Education.HIGHER);
 
         assertThat(person, hasProperty("dateOfBirth"));
     }
 
-    /*@Test
-    public void giveValueDateOfBirth_thenCorrect() {
-        Person person = new Person("Sergry", "Petrov", LocalDate.of(1980,12,12),
+    @Test
+    public void giveValueFamily_thenCorrect() {
+        Person person = new Person("Sergry", "Petrov", LocalDate.of(1980, 12, 12),
                 Sex.MALE, Education.HIGHER);
 
-        assertThat(person, hasProperty("name", equalTo("Sergry")));
-    }*/
+        assertThat(person, Matchers.hasProperty("family", equalTo("Petrov")));
+    }
 
     @Test
     public void keyFoundInMap_thenCorrect() {
 
         Map<Integer, Person> map = new HashMap<>();
         Person person1 = new Person("Sergry", "Petrov",
-                LocalDate.of(1980,12,12),
+                LocalDate.of(1980, 12, 12),
                 Sex.MALE, Education.HIGHER);
         Person person2 = new Person("Yriy", "Gagarin",
-                LocalDate.of(1981,12,20),
+                LocalDate.of(1981, 12, 20),
                 Sex.MALE, Education.HIGHER);
 
         map.put(1, person1);
@@ -48,10 +49,10 @@ class PersonTest {
 
         Map<Integer, Person> map = new HashMap<>();
         Person person1 = new Person("Sergry", "Petrov",
-                LocalDate.of(1980,12,12),
+                LocalDate.of(1980, 12, 12),
                 Sex.MALE, Education.HIGHER);
         Person person2 = new Person("Yriy", "Gagarin",
-                LocalDate.of(1981,12,20),
+                LocalDate.of(1981, 12, 20),
                 Sex.MALE, Education.HIGHER);
 
         map.put(1, person1);
