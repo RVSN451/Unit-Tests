@@ -55,31 +55,6 @@ public class Person implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Person that = (Person) o;
-
-        if (personID != that.personID) {
-            return false;
-        }
-        return true;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = personID != null ? name.hashCode() : 0;
-        result = 31 * result;
-        return result;
-    }
-
-    @Override
     public String toString() {
         return "ID: " + this.personID + ";\n\t\tимя: " + this.family + " " + this.name + "." +
                 "\n\t\tПол: " + this.sex.rusSex +
